@@ -84,15 +84,15 @@ def process_data(payroll_data, manual_date_info=None):
         # Formato: {codice_azienda: {'giorno': giorno, 'stringa_data': data_formattata}}
         azienda_to_date_mapping = {}
         
-        # Estrai la data dalla colonna "Consegna PDF"
+        # Estrai la data dalla colonna "Consegna"
         for idx, row in df.iterrows():
             try:
                 cod_azienda = str(row['Codice']).strip()
                 if not cod_azienda:
                     continue
                     
-                # Ottieni la data dalla colonna "Consegna PDF"
-                data_val = row.get('Consegna PDF', None)
+                # Ottieni la data dalla colonna "Consegna"
+                data_val = row.get('Consegna', None)
                 
                 # Se la data è vuota, 0 o non valida, usa 01/01/1900
                 if pd.isnull(data_val) or str(data_val).strip() == "" or str(data_val).strip() == "0":
